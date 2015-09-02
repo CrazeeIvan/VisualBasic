@@ -1,2 +1,13 @@
 C:\Users\blue20\Documents\VSprojects\HospitalDatabase\projTrainees\projTrainees\bin\Debug\projTrainees.exe.config
 C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\bin\Debug\projTrainees.exe.config
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\bin\Debug\dbTrainees.mdf
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\bin\Debug\dbTrainees_log.ldf
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\bin\Debug\projTrainees.exe
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\bin\Debug\projTrainees.pdb
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\bin\Debug\projTrainees.xml
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.frmMain.resources
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.Resources.resources
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.vbproj.GenerateResource.Cache
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.exe
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.xml
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.pdb
