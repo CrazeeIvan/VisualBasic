@@ -5,15 +5,15 @@ Public Class frmMain
     Dim connectionString As String
     Dim cnn As New SqlConnection
     Dim dt As New DataTable
-    Dim ds As New DataSet("Employees")
-    Dim iRecCount As Integer
-    Dim iIndex As Integer = 0
+    Dim ds As New DataSet("tblDetails")
+    Dim intRecCount As Integer
+    Dim intIndex As Integer = 0
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'DisableInput()
         ConnectionToDatabase()
-        DisplayRecord(iIndex)
+        DisplayRecord(intIndex)
         'dtDOB.Value = DateTime.Now
         'dtDateStarted.Value = DateTime.Now
 
@@ -28,9 +28,9 @@ Public Class frmMain
             Dim str As String = "SELECT * FROM tblDetails"
             Dim da As New SqlDataAdapter(str, cnn)
             da.MissingSchemaAction = MissingSchemaAction.AddWithKey
-            da.Fill(ds, "Details")
-            dt = ds.Tables("Details")
-            iRecCount = dt.Rows.Count
+            da.Fill(ds, "tblDetails")
+            dt = ds.Tables("tblDetails")
+            intRecCount = dt.Rows.Count
 
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
@@ -112,8 +112,8 @@ Public Class frmMain
     Private Sub DisplayRecord(Index As Integer)
         Try
             txtID.Text = dt.Rows(Index)("ID").ToString()
-            txtFirstName.Text = dt.Rows(Index)("FirstName").ToString()
-            txtLastName.Text = dt.Rows(Index)("LastName").ToString()
+            txtFirstName.Text = dt.Rows(Index)("First Name").ToString()
+            txtLastName.Text = dt.Rows(Index)("Last Name").ToString()
             txtAddress1.Text = dt.Rows(Index)("Address1").ToString()
             If Len(dt.Rows(Index)("Address2").ToString()) > 0 Then
                 txtAddress2.Text = dt.Rows(Index)("Address2").ToString()
@@ -125,7 +125,7 @@ Public Class frmMain
             Else
                 txtGender.Text = "Female"
             End If
-            txtDoB.Text = dt.Rows(Index)("DateStarted").ToString()
+            txtDoB.Text = dt.Rows(Index)("Birth Date").ToString()
             If Len(dt.Rows(Index)("Notes").ToString()) > 0 Then
                 txtNotes.Text = dt.Rows(Index)("Notes").ToString()
             End If
@@ -159,26 +159,26 @@ Public Class frmMain
     End Sub
 
     Private Sub btnFirst_Click(sender As Object, e As EventArgs) Handles btnFirst.Click
-        iIndex = 0
-        DisplayRecord(iIndex)
+        intIndex = 0
+        DisplayRecord(intIndex)
     End Sub
 
     Private Sub btnLast_Click(sender As Object, e As EventArgs) Handles btnLast.Click
-        iIndex = iRecCount - 1
-        DisplayRecord(iIndex)
+        intIndex = intRecCount - 1
+        DisplayRecord(intIndex)
     End Sub
 
     Private Sub btnPrevious_Click(sender As Object, e As EventArgs) Handles btnPrevious.Click
-        If iIndex > 0 Then
-            iIndex -= 1
-            DisplayRecord(iIndex)
+        If intIndex > 0 Then
+            intIndex -= 1
+            DisplayRecord(intIndex)
         End If
     End Sub
 
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        If iIndex < iRecCount - 1 Then
-            iIndex += 1
-            DisplayRecord(iIndex)
+        If intIndex < intRecCount - 1 Then
+            intIndex += 1
+            DisplayRecord(intIndex)
         End If
     End Sub
 
@@ -201,7 +201,7 @@ Public Class frmMain
 
         Try
 
-            Dim row As DataRow = ds.Tables("Employees").NewRow()
+            Dim row As DataRow = ds.Tables("tblDetails").NewRow()
 
             row("FirstName") = "First Name"
             row("LastName") = "Last Name"
@@ -212,11 +212,11 @@ Public Class frmMain
             row("Notes") = "Notes"
 
             ds.Tables("Employees").Rows.Add(row)
-            iRecCount = dt.Rows.Count
+            intRecCount = dt.Rows.Count
 
-            iIndex = iRecCount - 1
+            intIndex = intRecCount - 1
 
-            DisplayRecord(iIndex)
+            DisplayRecord(intIndex)
 
         Catch ex As Exception
             MessageBox.Show("Bla")
@@ -240,11 +240,11 @@ Public Class frmMain
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         ds.RejectChanges()
-        iRecCount = dt.Rows.Count
+        intRecCount = dt.Rows.Count
 
-        iIndex = iRecCount - 1
+        intIndex = intRecCount - 1
 
-        DisplayRecord(iIndex)
+        DisplayRecord(intIndex)
 
         'DisableInput()
         btnFirst.Enabled = True
