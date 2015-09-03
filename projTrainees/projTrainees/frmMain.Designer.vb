@@ -34,7 +34,6 @@ Partial Class frmMain
         Me.dtDoB = New System.Windows.Forms.DateTimePicker()
         Me.chkMale = New System.Windows.Forms.CheckBox()
         Me.chkFemale = New System.Windows.Forms.CheckBox()
-        Me.txtNotes = New System.Windows.Forms.RichTextBox()
         Me.lblID = New System.Windows.Forms.Label()
         Me.lblFirstName = New System.Windows.Forms.Label()
         Me.lblLastName = New System.Windows.Forms.Label()
@@ -46,7 +45,6 @@ Partial Class frmMain
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.lblDob = New System.Windows.Forms.Label()
         Me.lblGender = New System.Windows.Forms.Label()
-        Me.lblNotes = New System.Windows.Forms.Label()
         Me.txtDoB = New System.Windows.Forms.TextBox()
         Me.txtGender = New System.Windows.Forms.TextBox()
         Me.btnFirst = New System.Windows.Forms.Button()
@@ -60,6 +58,9 @@ Partial Class frmMain
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtNotes = New System.Windows.Forms.RichTextBox()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtID
@@ -151,14 +152,6 @@ Partial Class frmMain
         Me.chkFemale.TabIndex = 11
         Me.chkFemale.Text = "Female"
         Me.chkFemale.UseVisualStyleBackColor = True
-        '
-        'txtNotes
-        '
-        Me.txtNotes.Location = New System.Drawing.Point(127, 343)
-        Me.txtNotes.Name = "txtNotes"
-        Me.txtNotes.Size = New System.Drawing.Size(485, 146)
-        Me.txtNotes.TabIndex = 13
-        Me.txtNotes.Text = ""
         '
         'lblID
         '
@@ -259,15 +252,6 @@ Partial Class frmMain
         Me.lblGender.TabIndex = 24
         Me.lblGender.Text = "Gender"
         '
-        'lblNotes
-        '
-        Me.lblNotes.AutoSize = True
-        Me.lblNotes.Location = New System.Drawing.Point(15, 343)
-        Me.lblNotes.Name = "lblNotes"
-        Me.lblNotes.Size = New System.Drawing.Size(35, 13)
-        Me.lblNotes.TabIndex = 25
-        Me.lblNotes.Text = "Notes"
-        '
         'txtDoB
         '
         Me.txtDoB.Location = New System.Drawing.Point(127, 267)
@@ -284,7 +268,7 @@ Partial Class frmMain
         '
         'btnFirst
         '
-        Me.btnFirst.Location = New System.Drawing.Point(152, 525)
+        Me.btnFirst.Location = New System.Drawing.Point(127, 564)
         Me.btnFirst.Name = "btnFirst"
         Me.btnFirst.Size = New System.Drawing.Size(75, 23)
         Me.btnFirst.TabIndex = 28
@@ -293,7 +277,7 @@ Partial Class frmMain
         '
         'btnPrevious
         '
-        Me.btnPrevious.Location = New System.Drawing.Point(240, 525)
+        Me.btnPrevious.Location = New System.Drawing.Point(215, 564)
         Me.btnPrevious.Name = "btnPrevious"
         Me.btnPrevious.Size = New System.Drawing.Size(75, 23)
         Me.btnPrevious.TabIndex = 29
@@ -302,14 +286,14 @@ Partial Class frmMain
         '
         'txtIndex
         '
-        Me.txtIndex.Location = New System.Drawing.Point(320, 527)
+        Me.txtIndex.Location = New System.Drawing.Point(296, 564)
         Me.txtIndex.Name = "txtIndex"
         Me.txtIndex.Size = New System.Drawing.Size(100, 20)
         Me.txtIndex.TabIndex = 30
         '
         'btnNext
         '
-        Me.btnNext.Location = New System.Drawing.Point(427, 525)
+        Me.btnNext.Location = New System.Drawing.Point(402, 564)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(75, 23)
         Me.btnNext.TabIndex = 31
@@ -318,7 +302,7 @@ Partial Class frmMain
         '
         'btnLast
         '
-        Me.btnLast.Location = New System.Drawing.Point(515, 525)
+        Me.btnLast.Location = New System.Drawing.Point(483, 564)
         Me.btnLast.Name = "btnLast"
         Me.btnLast.Size = New System.Drawing.Size(75, 23)
         Me.btnLast.TabIndex = 32
@@ -327,7 +311,7 @@ Partial Class frmMain
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(908, 543)
+        Me.btnExit.Location = New System.Drawing.Point(908, 564)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 23)
         Me.btnExit.TabIndex = 33
@@ -379,11 +363,30 @@ Partial Class frmMain
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.txtNotes)
+        Me.GroupBox1.Location = New System.Drawing.Point(127, 343)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(651, 215)
+        Me.GroupBox1.TabIndex = 39
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Notes"
+        '
+        'txtNotes
+        '
+        Me.txtNotes.Location = New System.Drawing.Point(6, 19)
+        Me.txtNotes.Name = "txtNotes"
+        Me.txtNotes.Size = New System.Drawing.Size(639, 190)
+        Me.txtNotes.TabIndex = 14
+        Me.txtNotes.Text = ""
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1017, 629)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btnDelete)
@@ -397,7 +400,6 @@ Partial Class frmMain
         Me.Controls.Add(Me.btnFirst)
         Me.Controls.Add(Me.txtGender)
         Me.Controls.Add(Me.txtDoB)
-        Me.Controls.Add(Me.lblNotes)
         Me.Controls.Add(Me.lblGender)
         Me.Controls.Add(Me.lblDob)
         Me.Controls.Add(Me.lblEmail)
@@ -409,7 +411,6 @@ Partial Class frmMain
         Me.Controls.Add(Me.lblLastName)
         Me.Controls.Add(Me.lblFirstName)
         Me.Controls.Add(Me.lblID)
-        Me.Controls.Add(Me.txtNotes)
         Me.Controls.Add(Me.chkFemale)
         Me.Controls.Add(Me.chkMale)
         Me.Controls.Add(Me.dtDoB)
@@ -424,6 +425,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.txtID)
         Me.Name = "frmMain"
         Me.Text = "Form1"
+        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -440,7 +442,6 @@ Partial Class frmMain
     Friend WithEvents dtDoB As System.Windows.Forms.DateTimePicker
     Friend WithEvents chkMale As System.Windows.Forms.CheckBox
     Friend WithEvents chkFemale As System.Windows.Forms.CheckBox
-    Friend WithEvents txtNotes As System.Windows.Forms.RichTextBox
     Friend WithEvents lblID As System.Windows.Forms.Label
     Friend WithEvents lblFirstName As System.Windows.Forms.Label
     Friend WithEvents lblLastName As System.Windows.Forms.Label
@@ -452,7 +453,6 @@ Partial Class frmMain
     Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents lblDob As System.Windows.Forms.Label
     Friend WithEvents lblGender As System.Windows.Forms.Label
-    Friend WithEvents lblNotes As System.Windows.Forms.Label
     Friend WithEvents txtDoB As System.Windows.Forms.TextBox
     Friend WithEvents txtGender As System.Windows.Forms.TextBox
     Friend WithEvents btnFirst As System.Windows.Forms.Button
@@ -466,5 +466,7 @@ Partial Class frmMain
     Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents txtNotes As System.Windows.Forms.RichTextBox
 
 End Class

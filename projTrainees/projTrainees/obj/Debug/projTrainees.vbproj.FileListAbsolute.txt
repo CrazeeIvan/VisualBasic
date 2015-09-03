@@ -11,3 +11,4 @@ C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\D
 C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.exe
 C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.xml
 C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.pdb
+C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\obj\Debug\projTrainees.vbprojResolveAssemblyReference.cache

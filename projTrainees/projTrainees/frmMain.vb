@@ -5,17 +5,16 @@ Public Class frmMain
     Dim connectionString As String
     Dim cnn As New SqlConnection
     Dim dt As New DataTable
-    Dim ds As New DataSet("tblDetails")
+    Dim ds As New DataSet("Details")
     Dim intRecCount As Integer
     Dim intIndex As Integer = 0
-
+    Dim newline As String = vbNewLine.ToString()
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'DisableInput()
+        DisableInput()
         ConnectionToDatabase()
         DisplayRecord(intIndex)
-        'dtDOB.Value = DateTime.Now
-        'dtDateStarted.Value = DateTime.Now
+        dtDoB.Value = DateTime.Now
 
     End Sub
 
@@ -37,44 +36,44 @@ Public Class frmMain
         End Try
     End Sub
 
-    'Private Sub DisableInput()
-    '    Try
+    Private Sub DisableInput()
+        Try
 
-    '        For Each Ctrl As Control In Me.Controls
-    '            If TypeOf Ctrl Is TextBox Then
-    '                Ctrl.Enabled = False
-    '            Else
-    '                Ctrl.Enabled = True
-    '            End If
-    '        Next
+            For Each Ctrl As Control In Me.Controls
+                If TypeOf Ctrl Is TextBox Then
+                    Ctrl.Enabled = False
+                Else
+                    Ctrl.Enabled = True
+                End If
+            Next
 
-    '        For Each GroupBoxControl As Control In Me.Controls
-    '            If TypeOf GroupBoxControl Is GroupBox Then
-    '                For Each Ctrl As Control In GroupBoxControl.Controls
-    '                    If TypeOf Ctrl Is TextBox Then
-    '                        Ctrl.Enabled = False
-    '                    Else
-    '                        Ctrl.Enabled = True
-    '                    End If
-    '                Next
-    '            End If
-    '        Next
+            For Each GroupBoxControl As Control In Me.Controls
+                If TypeOf GroupBoxControl Is GroupBox Then
+                    For Each Ctrl As Control In GroupBoxControl.Controls
+                        If TypeOf Ctrl Is TextBox Then
+                            Ctrl.Enabled = False
+                        Else
+                            Ctrl.Enabled = True
+                        End If
+                    Next
+                End If
+            Next
 
-    '        txtCounty.Visible = True
-    '        dtDoB.Visible = True
-    '        txtGender.Visible = True
-    '        txtDoB.Visible = True
+            txtCounty.Visible = True
+            dtDoB.Visible = True
+            txtGender.Visible = True
+            txtDoB.Visible = True
 
-    '        dtDOB.Visible = False
-    '        chkMale.Visible = False
-    '        chkFemale.Visible = False
-    '        dtDoB.Visible = False
+            dtDOB.Visible = False
+            chkMale.Visible = False
+            chkFemale.Visible = False
+            dtDoB.Visible = False
 
 
-    '    Catch ex As Exception
-    '        MessageBox.Show("Unable to set up display! ")
-    '    End Try
-    'End Sub
+        Catch ex As Exception
+            MessageBox.Show("Unable to set up display! ")
+        End Try
+    End Sub
 
     Private Sub EnableInput()
         Try
@@ -119,19 +118,26 @@ Public Class frmMain
                 txtAddress2.Text = dt.Rows(Index)("Address2").ToString()
             End If
             txtCounty.Text = dt.Rows(Index)("County").ToString()
-            dtDoB.Text = dt.Rows(Index)("DateOfBirth").ToString()
-            If (dt.Rows(Index)("Gender").ToString()) = "M" Then
+            txtCountry.Text = dt.Rows(Index)("Country").ToString()
+            txtPhone.Text = dt.Rows(Index)("Phone").ToString()
+            txtEmail.Text = dt.Rows(Index)("Email").ToString()
+            txtDoB.Text = dt.Rows(Index)("DOB").ToString()
+            If (dt.Rows(Index)("Gender").ToString()) = "True" Then
                 txtGender.Text = "Male"
+                chkMale.Checked = True
+                chkFemale.Checked = False
             Else
                 txtGender.Text = "Female"
+                chkFemale.Checked = False
+                chkMale.Checked = True
             End If
-            txtDoB.Text = dt.Rows(Index)("Birth Date").ToString()
+
             If Len(dt.Rows(Index)("Notes").ToString()) > 0 Then
                 txtNotes.Text = dt.Rows(Index)("Notes").ToString()
             End If
 
         Catch ex As Exception
-            MessageBox.Show("Unable to set up display!")
+            MessageBox.Show("Unable to set up display!" & newline & "Original Error:" & newline & ex.ToString())
         End Try
     End Sub
 
@@ -184,10 +190,18 @@ Public Class frmMain
 
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        If cnn.State = ConnectionState.Open Then
-            cnn.Close()
-        End If
-        Me.Close()
+        Try
+
+            MessageBox.Show("You have unsaved changes, are you sure you with to continue?" & newline)
+            If cnn.State = ConnectionState.Open Then
+                cnn.Close()
+            End If
+            Me.Close()
+        Catch ex As Exception
+            MessageBox.Show("There was an error while trying to close the application." & newline & "Original error:" & newline & ex.ToString())
+        End Try
+        
+
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -207,11 +221,15 @@ Public Class frmMain
             row("LastName") = "Last Name"
             row("Address1") = "Address1"
             row("Address2") = "Address2"
-            row("Birth Date") = dtDoB.Value()
-            row("Gender") = "M"
+            row("County") = "County"
+            row("Country") = "Country"
+            row("Phone") = "Phone"
+            row("Email") = "Email"
+            row("DOB") = dtDoB.Value()
+            row("Gender") = "True"
             row("Notes") = "Notes"
 
-            ds.Tables("Employees").Rows.Add(row)
+            ds.Tables("tblDetails").Rows.Add(row)
             intRecCount = dt.Rows.Count
 
             intIndex = intRecCount - 1
