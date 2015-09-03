@@ -10,18 +10,14 @@ Public Class frmMain
     Dim intIndex As Integer = 0
     Dim newline As String = vbNewLine.ToString()
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         DisableInput()
         ConnectionToDatabase()
         DisplayRecord(intIndex)
-        dtDoB.Value = DateTime.Now
-
     End Sub
 
     Private Sub ConnectionToDatabase()
         connectionString = "Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\blue20\Documents\VSprojects\VisualBasic\projTrainees\projTrainees\bin\Debug\dbTrainees.mdf;Integrated Security=True"
         cnn = New SqlConnection(connectionString)
-
         Try
             cnn.Open()
             Dim str As String = "SELECT * FROM tblDetails"
@@ -30,7 +26,6 @@ Public Class frmMain
             da.Fill(ds, "tblDetails")
             dt = ds.Tables("tblDetails")
             intRecCount = dt.Rows.Count
-
         Catch ex As Exception
             MessageBox.Show(ex.ToString)
         End Try
@@ -38,7 +33,6 @@ Public Class frmMain
 
     Private Sub DisableInput()
         Try
-
             For Each Ctrl As Control In Me.Controls
                 If TypeOf Ctrl Is TextBox Then
                     Ctrl.Enabled = False
@@ -46,7 +40,6 @@ Public Class frmMain
                     Ctrl.Enabled = True
                 End If
             Next
-
             For Each GroupBoxControl As Control In Me.Controls
                 If TypeOf GroupBoxControl Is GroupBox Then
                     For Each Ctrl As Control In GroupBoxControl.Controls
@@ -58,18 +51,13 @@ Public Class frmMain
                     Next
                 End If
             Next
-
-            txtCounty.Visible = True
             dtDoB.Visible = True
             txtGender.Visible = True
             txtDoB.Visible = True
-
             dtDOB.Visible = False
-            chkMale.Visible = False
-            chkFemale.Visible = False
+            radMale.Visible = False
+            radFemale.Visible = False
             dtDoB.Visible = False
-
-
         Catch ex As Exception
             MessageBox.Show("Unable to set up display! ")
         End Try
@@ -77,13 +65,11 @@ Public Class frmMain
 
     Private Sub EnableInput()
         Try
-
             For Each Ctrl As Control In Me.Controls
                 If TypeOf Ctrl Is TextBox Then
                     Ctrl.Enabled = True
                 End If
             Next
-
             For Each GroupBoxControl As Control In Me.Controls
                 If TypeOf GroupBoxControl Is GroupBox Then
                     For Each Ctrl As Control In GroupBoxControl.Controls
@@ -93,30 +79,28 @@ Public Class frmMain
                     Next
                 End If
             Next
-
-            txtCounty.Visible = False
             dtDoB.Visible = False
             txtGender.Visible = False
             txtDoB.Visible = False
             dtDOB.Visible = True
-            chkFemale.Visible = True
-            chkMale.Visible = True
+            radFemale.Visible = True
+            radMale.Visible = True
             dtDoB.Visible = True
-
         Catch ex As Exception
-            MessageBox.Show("Unable to set up display! ")
+            MessageBox.Show("Unable to connect to database!" & newline & "Original Error:" & newline & ex.ToString())
         End Try
     End Sub
-
     Private Sub DisplayRecord(Index As Integer)
         Try
             txtID.Text = dt.Rows(Index)("ID").ToString()
             txtFirstName.Text = dt.Rows(Index)("First Name").ToString()
             txtLastName.Text = dt.Rows(Index)("Last Name").ToString()
             txtAddress1.Text = dt.Rows(Index)("Address1").ToString()
-            If Len(dt.Rows(Index)("Address2").ToString()) > 0 Then
-                txtAddress2.Text = dt.Rows(Index)("Address2").ToString()
-            End If
+            txtAddress2.Text = dt.Rows(Index)("Address2").ToString()
+            txtDoB.Text = dt.Rows(Index)("DOB").ToString()
+            dtDoB.Value = dt.Rows(Index)("DOB")
+
+
             txtCounty.Text = dt.Rows(Index)("County").ToString()
             txtCountry.Text = dt.Rows(Index)("Country").ToString()
             txtPhone.Text = dt.Rows(Index)("Phone").ToString()
@@ -124,20 +108,16 @@ Public Class frmMain
             txtDoB.Text = dt.Rows(Index)("DOB").ToString()
             If (dt.Rows(Index)("Gender").ToString()) = "True" Then
                 txtGender.Text = "Male"
-                chkMale.Checked = True
-                chkFemale.Checked = False
+                radMale.Checked = True
+                radFemale.Checked = False
             Else
                 txtGender.Text = "Female"
-                chkFemale.Checked = False
-                chkMale.Checked = True
+                radFemale.Checked = True
+                radMale.Checked = False
             End If
-
-            If Len(dt.Rows(Index)("Notes").ToString()) > 0 Then
-                txtNotes.Text = dt.Rows(Index)("Notes").ToString()
-            End If
-
+            txtNotes.Text = dt.Rows(Index)("Notes").ToString()
         Catch ex As Exception
-            MessageBox.Show("Unable to set up display!" & newline & "Original Error:" & newline & ex.ToString())
+            MessageBox.Show("Unable to connect to database!" & newline & "Original Error:" & newline & ex.ToString())
         End Try
     End Sub
 
@@ -149,31 +129,14 @@ Public Class frmMain
         Next
         Return True
     End Function
-
-    Private Sub CheckInput()
-        Try
-
-            If Not CheckForAlphaCharacters(txtFirstName.ToString()) Then
-                MessageBox.Show("Your name must containe only letters.")
-            Else
-                MessageBox.Show("Jeeeej")
-            End If
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
     Private Sub btnFirst_Click(sender As Object, e As EventArgs) Handles btnFirst.Click
         intIndex = 0
         DisplayRecord(intIndex)
     End Sub
-
     Private Sub btnLast_Click(sender As Object, e As EventArgs) Handles btnLast.Click
         intIndex = intRecCount - 1
         DisplayRecord(intIndex)
     End Sub
-
     Private Sub btnPrevious_Click(sender As Object, e As EventArgs) Handles btnPrevious.Click
         If intIndex > 0 Then
             intIndex -= 1
@@ -187,8 +150,6 @@ Public Class frmMain
             DisplayRecord(intIndex)
         End If
     End Sub
-
-
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Try
 
@@ -206,17 +167,13 @@ Public Class frmMain
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         EnableInput()
-
         btnFirst.Enabled = False
         btnPrevious.Enabled = False
         btnNext.Enabled = False
         btnLast.Enabled = False
-        chkMale.Checked = True
-
+        radMale.Checked = True
         Try
-
-            Dim row As DataRow = ds.Tables("tblDetails").NewRow()
-
+            Dim row As DataRow = ds.Tables("Details").NewRow()
             row("FirstName") = "First Name"
             row("LastName") = "Last Name"
             row("Address1") = "Address1"
@@ -237,7 +194,7 @@ Public Class frmMain
             DisplayRecord(intIndex)
 
         Catch ex As Exception
-            MessageBox.Show("Bla")
+            MessageBox.Show("Unable to add new entry." & newline & "Original Error:" & newline & ex.ToString())
         End Try
 
     End Sub
@@ -252,8 +209,8 @@ Public Class frmMain
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        'DisableInput()
-        'CheckInput()
+        DisableInput()
+
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click

@@ -32,8 +32,6 @@ Partial Class frmMain
         Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.dtDoB = New System.Windows.Forms.DateTimePicker()
-        Me.chkMale = New System.Windows.Forms.CheckBox()
-        Me.chkFemale = New System.Windows.Forms.CheckBox()
         Me.lblID = New System.Windows.Forms.Label()
         Me.lblFirstName = New System.Windows.Forms.Label()
         Me.lblLastName = New System.Windows.Forms.Label()
@@ -60,6 +58,8 @@ Partial Class frmMain
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtNotes = New System.Windows.Forms.RichTextBox()
+        Me.radMale = New System.Windows.Forms.RadioButton()
+        Me.radFemale = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -132,26 +132,6 @@ Partial Class frmMain
         Me.dtDoB.Name = "dtDoB"
         Me.dtDoB.Size = New System.Drawing.Size(200, 20)
         Me.dtDoB.TabIndex = 9
-        '
-        'chkMale
-        '
-        Me.chkMale.AutoSize = True
-        Me.chkMale.Location = New System.Drawing.Point(127, 293)
-        Me.chkMale.Name = "chkMale"
-        Me.chkMale.Size = New System.Drawing.Size(49, 17)
-        Me.chkMale.TabIndex = 10
-        Me.chkMale.Text = "Male"
-        Me.chkMale.UseVisualStyleBackColor = True
-        '
-        'chkFemale
-        '
-        Me.chkFemale.AutoSize = True
-        Me.chkFemale.Location = New System.Drawing.Point(215, 293)
-        Me.chkFemale.Name = "chkFemale"
-        Me.chkFemale.Size = New System.Drawing.Size(60, 17)
-        Me.chkFemale.TabIndex = 11
-        Me.chkFemale.Text = "Female"
-        Me.chkFemale.UseVisualStyleBackColor = True
         '
         'lblID
         '
@@ -381,11 +361,36 @@ Partial Class frmMain
         Me.txtNotes.TabIndex = 14
         Me.txtNotes.Text = ""
         '
+        'radMale
+        '
+        Me.radMale.AutoSize = True
+        Me.radMale.Location = New System.Drawing.Point(127, 289)
+        Me.radMale.Name = "radMale"
+        Me.radMale.Size = New System.Drawing.Size(48, 17)
+        Me.radMale.TabIndex = 40
+        Me.radMale.TabStop = True
+        Me.radMale.Text = "Male"
+        Me.radMale.UseVisualStyleBackColor = True
+        '
+        'radFemale
+        '
+        Me.radFemale.AutoSize = True
+        Me.radFemale.Location = New System.Drawing.Point(191, 289)
+        Me.radFemale.Name = "radFemale"
+        Me.radFemale.Size = New System.Drawing.Size(59, 17)
+        Me.radFemale.TabIndex = 41
+        Me.radFemale.TabStop = True
+        Me.radFemale.Text = "Female"
+        Me.radFemale.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1017, 629)
+        Me.Controls.Add(Me.txtGender)
+        Me.Controls.Add(Me.radFemale)
+        Me.Controls.Add(Me.radMale)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnSave)
@@ -398,8 +403,6 @@ Partial Class frmMain
         Me.Controls.Add(Me.txtIndex)
         Me.Controls.Add(Me.btnPrevious)
         Me.Controls.Add(Me.btnFirst)
-        Me.Controls.Add(Me.txtGender)
-        Me.Controls.Add(Me.txtDoB)
         Me.Controls.Add(Me.lblGender)
         Me.Controls.Add(Me.lblDob)
         Me.Controls.Add(Me.lblEmail)
@@ -411,8 +414,6 @@ Partial Class frmMain
         Me.Controls.Add(Me.lblLastName)
         Me.Controls.Add(Me.lblFirstName)
         Me.Controls.Add(Me.lblID)
-        Me.Controls.Add(Me.chkFemale)
-        Me.Controls.Add(Me.chkMale)
         Me.Controls.Add(Me.dtDoB)
         Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.txtPhone)
@@ -423,6 +424,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.txtLastName)
         Me.Controls.Add(Me.txtFirstName)
         Me.Controls.Add(Me.txtID)
+        Me.Controls.Add(Me.txtDoB)
         Me.Name = "frmMain"
         Me.Text = "Form1"
         Me.GroupBox1.ResumeLayout(False)
@@ -440,8 +442,6 @@ Partial Class frmMain
     Friend WithEvents txtPhone As System.Windows.Forms.TextBox
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents dtDoB As System.Windows.Forms.DateTimePicker
-    Friend WithEvents chkMale As System.Windows.Forms.CheckBox
-    Friend WithEvents chkFemale As System.Windows.Forms.CheckBox
     Friend WithEvents lblID As System.Windows.Forms.Label
     Friend WithEvents lblFirstName As System.Windows.Forms.Label
     Friend WithEvents lblLastName As System.Windows.Forms.Label
@@ -468,5 +468,7 @@ Partial Class frmMain
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtNotes As System.Windows.Forms.RichTextBox
+    Friend WithEvents radMale As System.Windows.Forms.RadioButton
+    Friend WithEvents radFemale As System.Windows.Forms.RadioButton
 
 End Class
