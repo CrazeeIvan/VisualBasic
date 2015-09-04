@@ -60,6 +60,7 @@ Partial Class frmMain
         Me.txtNotes = New System.Windows.Forms.RichTextBox()
         Me.radMale = New System.Windows.Forms.RadioButton()
         Me.radFemale = New System.Windows.Forms.RadioButton()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -111,6 +112,7 @@ Partial Class frmMain
         Me.txtCounty.Name = "txtCounty"
         Me.txtCounty.Size = New System.Drawing.Size(100, 20)
         Me.txtCounty.TabIndex = 6
+        Me.txtCounty.Text = " "
         '
         'txtPhone
         '
@@ -383,11 +385,21 @@ Partial Class frmMain
         Me.radFemale.Text = "Female"
         Me.radFemale.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(556, 99)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 42
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1017, 629)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtGender)
         Me.Controls.Add(Me.radFemale)
         Me.Controls.Add(Me.radMale)
@@ -470,5 +482,6 @@ Partial Class frmMain
     Friend WithEvents txtNotes As System.Windows.Forms.RichTextBox
     Friend WithEvents radMale As System.Windows.Forms.RadioButton
     Friend WithEvents radFemale As System.Windows.Forms.RadioButton
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

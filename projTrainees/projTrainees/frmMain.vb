@@ -152,12 +152,19 @@ Public Class frmMain
     End Sub
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Try
+            Dim result As Integer = MessageBox.Show("Warning. There may be unsaved changes pending, are you sure you wish to exit and discard these changes?", "caption", MessageBoxButtons.YesNo)
+            If result = DialogResult.No Then
+                MessageBox.Show("Exiting has been cancelled by the user.")
+            ElseIf result = DialogResult.Yes Then
+                MessageBox.Show("Changes have been discarded and the program will now exit.")
+                If cnn.State = ConnectionState.Open Then
+                    cnn.Close()
+                End If
+                Me.Close()
+                End If
+                'MessageBox.Show("You have unsaved changes, are you sure you with to exit?" & newline)
 
-            MessageBox.Show("You have unsaved changes, are you sure you with to continue?" & newline)
-            If cnn.State = ConnectionState.Open Then
-                cnn.Close()
-            End If
-            Me.Close()
+
         Catch ex As Exception
             MessageBox.Show("There was an error while trying to close the application." & newline & "Original error:" & newline & ex.ToString())
         End Try
